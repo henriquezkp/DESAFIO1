@@ -1,3 +1,4 @@
+import { usersList } from "./users.data"
 export class Login {
     constructor() {
         this.inputUsuario = document.getElementById("user");
@@ -12,8 +13,7 @@ export class Login {
     }
 
     buscaUser(usuario) {
-        usersList.find(listaDeUsers => listaDeUsers.username === usuario {
-
-        });
+        let user = usersList.find(listaDeUsers => listaDeUsers.login.username === usuario);
+        console.log(user);
     }
 }
