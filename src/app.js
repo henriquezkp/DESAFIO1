@@ -2,23 +2,33 @@ import { Jogo } from "./jogos";
 import { Login } from "./login";
 
 
-class Pagina {
-    constructor() {
-        //console.log("oioioi");
-    }
+/*class Pagina {
+
 }
 
-new Pagina();
+new Pagina();*/
 
 
-const { Jogos } = require("./jogos");
+const login = new Login;
+const sectionLogin = document.getElementById("sectionLogin");
+const sectionHome = document.getElementById("sectionHome");
+const sectionRent = document.getElementById("sectionRent");
 
 
-const listaDeJogos = [];
 
-const addJogo = (nome, genero, resumo, classificacao) => {
-    const jogo = new Jogo(nome, genero, resumo, classificacao);
-    listaDeJogos.push(jogo);
+
+window.addEventListener("load", () => {
+
+    if (login.recuperarDados()) {
+        homePage();
+    }
+});
+
+
+const homePage = () => {
+    sectionLogin.style.display = "none";
+    sectionHome.style.display = "block";
+    sectionRent.style.display = "block";
 };
-const teste = new Login;
-teste.registraEventos();
+
+login.registraEventos();

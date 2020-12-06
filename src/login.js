@@ -5,12 +5,12 @@ export class Login {
         this.inputPassword = document.getElementById("passwordInput");
         this.buttonLogin = document.getElementById("singin");
         this.sectionLogin = document.getElementById("sectionLogin");
+        this.recuperarDados();
     }
 
     registraEventos() {
         this.buttonLogin.onclick = () => {
                 this.buscaUser(this.inputUsuario.value);
-
             }
             /*console.log(this.inputUsuario);
             console.log(this.inputPassword);*/
@@ -26,7 +26,9 @@ export class Login {
                 if (user.login.password === this.inputPassword.value) {
                     console.log("logado");
                     this.sectionLogin.style.display = "none";
-                    document.getElementById("sectionHome").style.display = "flex";
+                    document.getElementById("sectionHome").style.display = "block";
+                    console.log(user);
+                    this.salvarLocal(user);
                 } else {
                     console.log("verificar senha");
                 }
@@ -36,6 +38,22 @@ export class Login {
             console.log("errado");
 
             alert("Usuário não cadastrado");
+            return false;
+        }
+    }
+
+    salvarLocal(user) {
+        localStorage.setItem("localUser", JSON.stringify(user));
+    }
+
+    recuperarDados() {
+        let user = localStorage.getItem("localUser");
+
+        if (user !== null) {
+            console.log("é");
+            return true;
+        } else {
+            console.log("n")
             return false;
         }
     }

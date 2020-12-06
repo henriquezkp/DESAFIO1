@@ -1,0 +1,66 @@
+body{
+    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.logo{
+    position: 10px;
+}
+
+.input-dark{
+    background-color: darkslategray;
+}
+
+.Nomes{
+    background-color: rgb(192, 192, 192);
+    color: rgb(255, 255, 255);
+}
+
+#video{
+    margin: auto auto ;
+    width: 1200px;
+    height: 720px;
+}
+
+#informacoes{
+    margin: auto auto ;
+    width: 1200px;
+    height: 720px;
+    margin-bottom: 1200px;
+}
+
+.gameImagem{
+    margin: auto auto ;
+    width: 1200px;
+    height: 720px;
+}
+
+.logo{
+    width: 70px;
+    height: 70px;
+}
+
+.games{
+  height: 200px;
+  width: 400px;
+}
+.estrelas input[type=radio] {
+  display: none;
+}
+.estrelas label i.fa{
+  font-size: 2.5em
+}
+.estrelas label i.fa:before {
+  content:'\f005';
+  color: #FC0;
+}
+.estrelas input[type=radio]:checked ~ label i.fa:before {
+  color: #CCC;
+}
+

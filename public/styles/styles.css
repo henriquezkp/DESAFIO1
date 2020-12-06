@@ -14,7 +14,17 @@
 
 /* --------------------------- /////////// GENERAL /////////// --------------------------- */
 
-#aposLogin {
+#sectionLogin {
+    margin-top: 150px;
+    max-width: 30rem;
+}
+
+#sectionHome {
+    display: none;
+    margin-top: 150px;
+}
+
+#sectionRent {
     display: none;
 }
 
@@ -63,7 +73,7 @@ a:focus {
 
 html,
 body {
-    background-image: linear-gradient(rgba(11, 11, 11, 0.9), rgba(11, 11, 11, 0.9)), url(./../img/bg.jpg);
+    background-image: linear-gradient(rgba(11, 11, 11, 0.9), rgba(11, 11, 11, 0.9)), url(../img/bg.jpg);
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -90,9 +100,7 @@ body {
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
+h4 {
     font-family: Anurati, sans-serif;
     font-weight: 400;
 }
@@ -451,6 +459,11 @@ textarea:focus {
     font-family: Droid Sans, sans-serif;
 }
 
+#copyright {
+    font-family: Droid Sans, sans-serif;
+    bottom: 0;
+}
+
 @media (max-width: 991px) {
     .icon {
         width: 10%;
@@ -466,31 +479,4 @@ textarea:focus {
     .demo-card.long {
         margin-left: auto;
     }
-}
-
-body {
-    text-align: center;
-    padding-top: 50px
-}
-
-img {
-    height: 200px;
-    width: 400px;
-}
-
-.estrelas input[type=radio] {
-    display: none;
-}
-
-.estrelas label i.fa {
-    font-size: 2.5em
-}
-
-.estrelas label i.fa:before {
-    content: '\f005';
-    color: #FC0;
-}
-
-.estrelas input[type=radio]:checked~label i.fa:before {
-    color: #CCC;
 }
