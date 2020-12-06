@@ -4,7 +4,7 @@ import { Login } from "./login";
 
 class Pagina {
     constructor() {
-        console.log("oioioi");
+        //console.log("oioioi");
     }
 }
 
