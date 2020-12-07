@@ -1,34 +1,25 @@
 import { usersList } from "./users.data"
 export class Login {
-    constructor() {
-        this.inputUsuario = document.getElementById("userInput");
-        this.inputPassword = document.getElementById("passwordInput");
-        this.buttonLogin = document.getElementById("singin");
-        this.sectionLogin = document.getElementById("sectionLogin");
-        this.recuperarDados();
+    constructor(user, password) {
+
+        this.inputUsuario = user;
+        this.inputPassword = password;
+        this.buscaUser(user);
     }
 
-    registraEventos() {
-        this.buttonLogin.onclick = () => {
-                this.buscaUser(this.inputUsuario.value);
-            }
-            /*console.log(this.inputUsuario);
-            console.log(this.inputPassword);*/
-    }
 
     buscaUser(usuario) {
+        console.log(usuario);
         let user = usersList.find(listaDeUsers => listaDeUsers.login.username === usuario || listaDeUsers.email === usuario);
-        //console.log(user);
+        console.log(user);
         if (user !== undefined) {
-            //console.log("certo");
-            if (user.login.username === this.inputUsuario.value || user.email === this.inputUsuario.value) {
-                //console.log("2x certo");
-                if (user.login.password === this.inputPassword.value) {
-                    console.log("logado");
-                    this.sectionLogin.style.display = "none";
-                    document.getElementById("sectionHome").style.display = "block";
-                    console.log(user);
+
+            if (user.login.username === this.inputUsuario || user.email === this.inputUsuario) {
+
+                if (user.login.password === this.inputPassword) {
+
                     this.salvarLocal(user);
+                    return true;
                 } else {
                     console.log("verificar senha");
                 }
@@ -45,18 +36,5 @@ export class Login {
     salvarLocal(user) {
         localStorage.setItem("localUser", JSON.stringify(user));
     }
-
-    recuperarDados() {
-        let user = localStorage.getItem("localUser");
-
-        if (user !== null) {
-            console.log("é");
-            return true;
-        } else {
-            console.log("n")
-            return false;
-        }
-    }
-
 
 }

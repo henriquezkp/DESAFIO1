@@ -2,54 +2,96 @@ import { Jogo } from "./jogos";
 import { gamesList } from "./games.data";
 import { Login } from "./login";
 
+class App {
 
-const login = new Login;
-const sectionLogin = document.getElementById("sectionLogin");
-const sectionHome = document.getElementById("sectionHome");
-const sectionRent = document.getElementById("sectionRent");
+    constructor() {
+
+        this.sectionLogin = document.getElementById("sectionLogin");
+        this.sectionHome = document.getElementById("sectionHome");
+        this.sectionRent = document.getElementById("sectionRent");
+        this.inputUsuario = document.getElementById("userInput");
+        this.inputPassword = document.getElementById("passwordInput");
+        this.buttonLogin = document.getElementById("singin");
 
 
-window.addEventListener("load", () => {
-
-    if (login.recuperarDados()) {
-        homePage();
+        this.loginPage();
+        this.mostra();
+        this.recuperarDados();
+        this.registrarBotoes();
     }
-    mostra();
-});
 
+    loginPage() {
+        this.sectionLogin.style.display = "block";
+        this.sectionHome.style.display = "none";
+        this.sectionRent.style.display = "none";
+    };
 
-const homePage = () => {
-    sectionLogin.style.display = "none";
-    sectionHome.style.display = "block";
-    sectionRent.style.display = "block";
-};
+    homePage() {
+        this.sectionLogin.style.display = "none";
+        this.sectionHome.style.display = "block";
+        this.sectionRent.style.display = "none";
+    };
 
-login.registraEventos();
+    rentPage(jogo) {
+        this.sectionLogin.style.display = "none";
+        this.sectionHome.style.display = "none";
+        this.sectionRent.style.display = "none";
+        console.log(jogo);
+        const testes = document.getElementById("testes");
+        let novoHTML = '';
+        const jj = new Jogo(jogo);
 
-const registrarBotoes = () => {
-    document.querySelectorAll(".compra").forEach((el) => {
-        el.onclick = (event) => compra(event);
-    });
+        novoHTML += jj.rentCard();
+        testes.innerHTML = novoHTML;
+    };
+
+    registrarBotoes() {
+        document.querySelectorAll(".card-link").forEach((el) => {
+            el.onclick = (event) => this.compra(event);
+        });
+
+        this.buttonLogin.onclick = () => {
+            const login = new Login(this.inputUsuario.value, this.inputPassword.value);
+            if (login) {
+                this.homePage();
+            }
+        }
+    }
+
+    mostra() {
+        const testes = document.getElementById("cardGames");
+        let novoHTML = '';
+
+        gamesList.forEach(testeJogo => {
+            const cardGame = new Jogo(testeJogo);
+            novoHTML += cardGame.mostraCard();
+        });
+
+        testes.innerHTML = novoHTML;
+    }
+
+    recuperarDados() {
+        let user = localStorage.getItem("localUser");
+
+        if (user !== null) {
+            this.homePage();
+        } else {
+            console.log("n");
+            //this.buscaUser(this.inputUsuario);
+        }
+    }
+
+    compra(event) {
+
+        const objeto = event.path[1];
+        const cardDoGame = objeto.dataset.id;
+
+        const jogo = gamesList.find(f => f.game === cardDoGame);
+        //console.log(jogo);
+        this.rentPage(jogo);
+    }
+
 
 }
 
-const mostra = () => {
-    const testes = document.getElementById("cardGames");
-    let novoHTML = '';
-
-    gamesList.forEach(testeJogo => {
-        const cardGame = new Jogo(testeJogo);
-        novoHTML += cardGame.mostraCard();
-    });
-
-    testes.innerHTML = novoHTML;
-}
-
-const compra = (event) => {
-    console.log(event.path);
-    const testete = event.path[3];
-    const outroteste = parse(testete.dataset.nome);
-    console.log(outroteste);
-    const jogo = gamesList.find(nomeDoJogo);
-    console.log(jogo);
-}
+new App();
