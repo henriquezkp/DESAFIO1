@@ -1,12 +1,6 @@
 import { Jogo } from "./jogos";
+import { gamesList } from "./games.data";
 import { Login } from "./login";
-
-
-/*class Pagina {
-
-}
-
-new Pagina();*/
 
 
 const login = new Login;
@@ -15,13 +9,12 @@ const sectionHome = document.getElementById("sectionHome");
 const sectionRent = document.getElementById("sectionRent");
 
 
-
-
 window.addEventListener("load", () => {
 
     if (login.recuperarDados()) {
         homePage();
     }
+    mostra();
 });
 
 
@@ -32,3 +25,30 @@ const homePage = () => {
 };
 
 login.registraEventos();
+
+const registrarBotoes = () => {
+    document.querySelectorAll(".compra").forEach((el) => {
+        el.onclick = (event) => compra(event);
+    });
+
+}
+
+const mostra = () => {
+    const testes = document.getElementById("cardGames");
+    let novoHTML = '';
+
+    gamesList.forEach(testeJogo => {
+        const cardGame = new Jogo(testeJogo);
+        novoHTML += cardGame.mostraCard();
+    });
+
+    testes.innerHTML = novoHTML;
+}
+
+const compra = (event) => {
+    const testete = event.path[3];
+    const outroteste = parse(testete.dataset.nome);
+    console.log(outroteste);
+    const jogo = gamesList.find(nomeDoJogo);
+    console.log(jogo);
+}
