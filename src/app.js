@@ -46,6 +46,7 @@ const mostra = () => {
 }
 
 const compra = (event) => {
+    console.log(event.path);
     const testete = event.path[3];
     const outroteste = parse(testete.dataset.nome);
     console.log(outroteste);
