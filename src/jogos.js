@@ -24,7 +24,6 @@ export class Jogo {
     }
 
     rentCard() {
-        alert("foi");
         return `hahaha
         <div id="tetetetetete">
         <!-------------------- IMAGEM E VIDEO -------------------->
