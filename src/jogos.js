@@ -24,8 +24,8 @@ export class Jogo {
     }
 
     rentCard() {
-        return `hahaha
-        <div id="tetetetetete">
+        return `
+        <div id="">
         <!-------------------- IMAGEM E VIDEO -------------------->
         <section id="video">
             <div class="container">
@@ -83,12 +83,52 @@ export class Jogo {
                     </div>
                     <div class="col-md-3 text-white">
                         <h3 class="valor">R$ 200+</h3>
-                        <button class="btn btn-success col-md-4" type="button">Comprar</button>
+                        <button class="card-compra btn btn-success col-md-4 " type="button" data-id="${this.nome}">Comprar</button>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+        `;
+    }
+
+    finalizarCompra() {
+        alert("haha");
+        return `
+        <div class="card bg-dark mb-3">
+            <hr>
+            <div class="row g-0">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <img src="${this.imagem}" class="games" alt="" />
+                    <hr>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    <div class="card-body ">
+                        <h1 class="card-title">${this.nome}</h5>
+                            <h5 class="text text-success">disponivel</h5>
+                            <h3 class="Total text-warning col-md-6">Total estimado</h3>
+                            <h3 class="valor text-warning col-md-6">R$ 200+</h3>
+                            <hr />
+                            <h6 class="valor text-warning col-md-12">
+                                Esta compra é para você na sua assinatura e bibloteca podera utilizar em todas sua plataformas
+                            </h6>
+                            <div class="row-cols-1">
+                                <div class="input-group input-group mb-1 row-cols-2">
+                                    <button type="button" class="btn btn-success btn-lg btn-block card-confirma" data-id="${this.nome}">Confirmar</button>
+                                </div>
+                                <div class="input-group input-group-lg mb-5 row-cols-3">
+                                    <button type="button" class="btn btn-warning btn-lg btn-block card-cancela" data-id="${this.nome}">Cancelar</button>
+                                </div>
+                            </div>
+                            <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         `;
     }
 }

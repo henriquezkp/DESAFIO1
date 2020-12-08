@@ -12,6 +12,7 @@ class App {
         this.inputUsuario = document.getElementById("userInput");
         this.inputPassword = document.getElementById("passwordInput");
         this.buttonLogin = document.getElementById("singin");
+        this.finalizarCompra = document.getElementById("finalizaCompra");
 
 
         this.loginPage();
@@ -35,19 +36,42 @@ class App {
     rentPage(jogo) {
         this.sectionLogin.style.display = "none";
         this.sectionHome.style.display = "none";
+        this.sectionRent.style.display = "block";
+        console.log(jogo);
+        const divRent = document.getElementById("sectionRent");
+        let novoHTML = '';
+        let jj = new Jogo(jogo);
+
+        novoHTML += jj.rentCard();
+        divRent.innerHTML = novoHTML;
+    };
+
+    finalizarPage(jogo) {
+        this.sectionLogin.style.display = "none";
+        this.sectionHome.style.display = "none";
         this.sectionRent.style.display = "none";
+        this.finalizarCompra.style.display = "block";
         console.log(jogo);
         const testes = document.getElementById("testes");
         let novoHTML = '';
-        const jj = new Jogo(jogo);
+        let jj = new Jogo(jogo);
 
-        novoHTML += jj.rentCard();
+        novoHTML += jj.finalizarCompra();
         testes.innerHTML = novoHTML;
     };
 
     registrarBotoes() {
         document.querySelectorAll(".card-link").forEach((el) => {
             el.onclick = (event) => this.compra(event);
+        });
+        document.querySelectorAll(".card-compra").forEach((el) => {
+            el.onclick = (event) => this.mostraCompra(event);
+        });
+        document.querySelectorAll(".card-confirma").forEach((el) => {
+            el.onclick = (event) => this.confirmaCompra(event);
+        });
+        document.querySelectorAll(".card-cancela").forEach((el) => {
+            el.onclick = (event) => this.cancelaCompra(event);
         });
 
         this.buttonLogin.onclick = () => {
@@ -91,6 +115,15 @@ class App {
         this.rentPage(jogo);
     }
 
+    mostraCompra(event) {
+        alert("haha");
+        const objeto = event.path[1];
+        const cardDoGame = objeto.dataset.id;
+
+        const jogo = gamesList.find(f => f.game === cardDoGame);
+        //console.log(jogo);
+        this.finalizarPage(jogo);
+    }
 
 }
 
