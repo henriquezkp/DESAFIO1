@@ -25,18 +25,23 @@ class App {
         this.sectionLogin.style.display = "block";
         this.sectionHome.style.display = "none";
         this.sectionRent.style.display = "none";
+        this.finalizarCompra.style.display = "none";
     };
 
     homePage() {
         this.sectionLogin.style.display = "none";
         this.sectionHome.style.display = "block";
         this.sectionRent.style.display = "none";
+        this.finalizarCompra.style.display = "none";
+
     };
 
     rentPage(jogo) {
         this.sectionLogin.style.display = "none";
         this.sectionHome.style.display = "none";
         this.sectionRent.style.display = "block";
+        this.finalizarCompra.style.display = "none";
+
         console.log(jogo);
         const divRent = document.getElementById("sectionRent");
         let novoHTML = '';
@@ -65,6 +70,7 @@ class App {
             el.onclick = (event) => this.compra(event);
         });
         document.querySelectorAll(".card-compra").forEach((el) => {
+            alert("OK");
             el.onclick = (event) => this.mostraCompra(event);
         });
         document.querySelectorAll(".card-confirma").forEach((el) => {
@@ -83,7 +89,7 @@ class App {
     }
 
     mostra() {
-        const testes = document.getElementById("cardGames");
+        let testes = document.getElementById("cardGames");
         let novoHTML = '';
 
         gamesList.forEach(testeJogo => {
@@ -107,20 +113,21 @@ class App {
 
     compra(event) {
 
-        const objeto = event.path[1];
-        const cardDoGame = objeto.dataset.id;
+        let objeto = event.path[1];
+        let cardDoGame = objeto.dataset.id;
 
-        const jogo = gamesList.find(f => f.game === cardDoGame);
+        let jogo = gamesList.find(f => f.game === cardDoGame);
         //console.log(jogo);
         this.rentPage(jogo);
     }
 
     mostraCompra(event) {
-        alert("haha");
-        const objeto = event.path[1];
-        const cardDoGame = objeto.dataset.id;
+        alert("teste compra");
+        console.log(event.path);
+        let objeto = event.path[1];
+        let cardDoGame = objeto.dataset.id;
 
-        const jogo = gamesList.find(f => f.game === cardDoGame);
+        let jogo = gamesList.find(f => f.game === cardDoGame);
         //console.log(jogo);
         this.finalizarPage(jogo);
     }

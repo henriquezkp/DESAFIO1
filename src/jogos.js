@@ -25,10 +25,9 @@ export class Jogo {
 
     rentCard() {
         return `
-        <div id="">
         <!-------------------- IMAGEM E VIDEO -------------------->
-        <section id="video">
-            <div class="container">
+        <div id="video">
+            <div>
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -52,9 +51,9 @@ export class Jogo {
                     </a>
                 </div>
             </div>
-        </section>
+        </div>
         <!-------------------- Informações -------------------->
-        <section id="informacoes">
+        <div id="informacoes">
             <div class="card card text-warning  bg-dark">
                 <div class="row no-gutters">
                     <div class="col-md-4">
@@ -87,8 +86,7 @@ export class Jogo {
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
         `;
     }
 
