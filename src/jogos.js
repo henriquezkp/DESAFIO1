@@ -82,7 +82,7 @@ export class Jogo {
                     </div>
                     <div class="col-md-3 text-white">
                         <h3 class="valor">R$ 200+</h3>
-                        <button class="card-compra btn btn-success col-md-4 " type="button" data-id="${this.nome}">Comprar</button>
+                        <button class="card-compra2 btn btn-success col-md-4 " type="button" data-id="${this.nome}">Comprar</button>
                     </div>
                 </div>
             </div>

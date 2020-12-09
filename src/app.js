@@ -49,6 +49,9 @@ class App {
 
         novoHTML += jj.rentCard();
         divRent.innerHTML = novoHTML;
+        document.querySelectorAll(".card-compra2").forEach((el) => {
+            el.onclick = (event) => this.mostraCompra(event);
+        });
     };
 
     finalizarPage(jogo) {
@@ -63,21 +66,17 @@ class App {
 
         novoHTML += jj.finalizarCompra();
         testes.innerHTML = novoHTML;
-    };
-
-    registrarBotoes() {
-        document.querySelectorAll(".card-link").forEach((el) => {
-            el.onclick = (event) => this.compra(event);
-        });
-        document.querySelectorAll(".card-compra").forEach((el) => {
-            alert("OK");
-            el.onclick = (event) => this.mostraCompra(event);
-        });
         document.querySelectorAll(".card-confirma").forEach((el) => {
             el.onclick = (event) => this.confirmaCompra(event);
         });
         document.querySelectorAll(".card-cancela").forEach((el) => {
             el.onclick = (event) => this.cancelaCompra(event);
+        });
+    };
+
+    registrarBotoes() {
+        document.querySelectorAll(".card-link").forEach((el) => {
+            el.onclick = (event) => this.compra(event);
         });
 
         this.buttonLogin.onclick = () => {
@@ -122,8 +121,7 @@ class App {
     }
 
     mostraCompra(event) {
-        alert("teste compra");
-        console.log(event.path);
+
         let objeto = event.path[1];
         let cardDoGame = objeto.dataset.id;
 
